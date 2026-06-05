@@ -2,8 +2,14 @@
 
 sudo mkdir home/Tom/.smb
 
+: << 'EOF' -------------------------------------------------------
 echo "username=Tom" | sudo tee /home/Tom/.smb/credentials
 echo "password=T----t" | sudo tee -a /home/Tom/.smb/credentials
+------------------------------------------------------------------
+EOF
+
+echo "username=${USERNAME}" | sudo tee /home/Tom/.smb/credentials
+echo "password=${PASSWORD}" | sudo tee -a /home/Tom/.smb/credentials
 
 sudo chmod 600 ~/.smb/credentials
 
