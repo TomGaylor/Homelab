@@ -31,9 +31,11 @@ cd ~/Projects/Homelab
 ./gen-jellyfin-podman-cont-file.sh
 
 
-### Apply and Start ###
+### Apply and Start JellyFin ###
 systemctl --user daemon-reload
 systemctl --user enable --now jellyfin.service
+
+
 
 ### Verify ###
 systemctl --user status jellyfin.service
