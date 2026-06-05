@@ -18,6 +18,7 @@ Make the relevant install scripts executable
 ```
 chmod +x ~/Projects/Homelab/jellyfin-main-install.sh
 chmod +x ~/Projects/Homelab/mediaserver-mounts.sh
+chmod +x ~/Projects/Homelab/gen-jellyfin-podman-cont-file.sh
 ```
 Launch the main install script
 ```
