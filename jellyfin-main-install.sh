@@ -31,17 +31,16 @@ cd ~/Projects/Homelab
 ./gen-jellyfin-podman-cont-file.sh
 
 
-### 3. Apply and Start
+### Apply and Start ###
 systemctl --user daemon-reload
 systemctl --user enable --now jellyfin.service
 
-### Verify
+### Verify ###
 systemctl --user status jellyfin.service
 journalctl --user -u jellyfin -f
 podman exec jellyfin nvidia-smi   # Should show your 3070
 
-### Enable Hardware Acceleration in Jellyfin
-
+########## Enable Hardware Acceleration in Jellyfin #############
 # Go to http://your-ip:8096 → Dashboard → Playback → Transcoding
 # Set Hardware acceleration to NVIDIA NVENC
 # Enable:
@@ -49,9 +48,9 @@ podman exec jellyfin nvidia-smi   # Should show your 3070
 # Tone mapping (recommended)
 # Any other relevant options
 # Save and test with a transcoding stream.
+#################################################################
 
-
-### Quick Commands
+### Quick Commands ###
 # Restart:
 systemctl --user restart jellyfin
 # Logs:
