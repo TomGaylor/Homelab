@@ -3,7 +3,7 @@
 sudo mkdir /home/tom/.smb
 
 : << 'EOF' -------------------------------------------------------
-echo "username=Tom" | sudo tee /home/Tom/.smb/credentials
+echo "username=tom" | sudo tee /home/tom/.smb/credentials
 echo "password=T----t" | sudo tee -a /home/Tom/.smb/credentials
 ------------------------------------------------------------------
 EOF
