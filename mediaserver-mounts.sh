@@ -1,15 +1,18 @@
 ### Setup hidden credentials ###
 
-sudo mkdir home/Tom/.smb
+sudo mkdir /home/tom/.smb
 
 : << 'EOF' -------------------------------------------------------
 echo "username=Tom" | sudo tee /home/Tom/.smb/credentials
 echo "password=T----t" | sudo tee -a /home/Tom/.smb/credentials
 ------------------------------------------------------------------
 EOF
-
-echo "username=${USERNAME}" | sudo tee /home/Tom/.smb/credentials
-echo "password=${PASSWORD}" | sudo tee -a /home/Tom/.smb/credentials
+export USERNAME=tom
+export PASSWORD=T----t
+echo "username=${USERNAME}" | sudo tee /home/tom/.smb/credentials
+echo "password=${PASSWORD}" | sudo tee -a /home/tom/.smb/credentials
+export -n USERNAME
+export -n PASSWORD
 
 sudo chmod 600 ~/.smb/credentials
 
@@ -40,7 +43,7 @@ echo "[Mount]" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
 echo "What=//192.168.68.59/TivoVideo" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
 echo "Where=/var/mnt/remtivovideo" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
 echo "Type=cifs" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
-echo "Options=credentials=/var/home/Tom/.smb/credentials,vers=3.0,uid=1000,gid=1000,nofail,rw,_netdev" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
+echo "Options=credentials=/var/home/tom/.smb/credentials,vers=3.0,uid=1000,gid=1000,nofail,rw,_netdev" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
 echo "" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
 echo "[Install]" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
 echo "WantedBy=multi-user.target" | sudo tee -a /etc/systemd/system/var-mnt-remtivovideo.mount
@@ -72,7 +75,7 @@ echo "[Mount]" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
 echo "What=//192.168.68.59/music" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
 echo "Where=/var/mnt/remmusic" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
 echo "Type=cifs" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
-echo "Options=credentials=/var/home/Tom/.smb/credentials,vers=3.0,uid=1000,gid=1000,nofail,rw,_netdev" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
+echo "Options=credentials=/var/home/tom/.smb/credentials,vers=3.0,uid=1000,gid=1000,nofail,rw,_netdev" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
 echo "" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
 echo "[Install]" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
 echo "WantedBy=multi-user.target" | sudo tee -a /etc/systemd/system/var-mnt-remmusic.mount
