@@ -1,4 +1,4 @@
-
+# Linux disk partition expansion procedure on a VMWare VM 
 
 ## 1. Confirm available disk space in linux OS
 
