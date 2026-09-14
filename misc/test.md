@@ -7,13 +7,13 @@ df -h # list partitions and sizes and used
    # /dev/sda2 is the OS boot partition
    # /dev/sda1 is the boot efi part
 
-   ##### Shutdown the linux OS at a bash prompt
+   #### Shutdown the linux OS at a bash prompt
 
 shutdown now
 
-   # In the VMware workstation mgmt console select the VM and choose the option to "Edit the Virtual Machine settings"
+   ##### In the VMware workstation mgmt console select the VM and choose the option to "Edit the Virtual Machine settings"
 
-   # Select the Hard Disk Device in the left hand pane
+   ###### Select the Hard Disk Device in the left hand pane
 
    # Select Expand in the right hand panel to expand the disk capacity
 
