@@ -32,25 +32,34 @@ shutdown now
 - Move the slider or type the new size number as desired and click "resize"
 - Find the disk and partition number - Typical layout is something like /dev/nvme0n1p3 or /dev/sda3
 
-lsblk   # 
+lsblk  
 
-   # Grow the partition (replace with your disk and partition number) nvme0n1p3 259:3 
+## 6. Grow the partition
+> **Note:** Replace below with your disk and partition number (e.g. nvme0n1p3 259:3) 
 
 sudo growpart /dev/nvme0n1 3
 
-   # If this doesn't work because growpart is not installed, try the following options 
-   # (more information below on issues with disk partition location challenges)
+> **Note:** If this doesn't work because growpart is not installed, try the following options (more information below on issues with disk partition location challenges)
+
+## 6a. Alternate method:
 
 sudo btrfs filesystem resize max /sysroot
 
-   # Check partition info to address the correct one
-
+ ## 6b. Alternate method:
+ 
+ - Check partition info to address the correct one
+```bash
 lsblk
 sudo parted -l
-
-   # type the following
-
-sudo parted /dev/nvme0n1 resizepart 3 100%    # or for desktop: sudo parted /dev/sda resizepart 3 100% 
+```
+- Type the following
+```bash
+sudo parted /dev/nvme0n1 resizepart 3 100%
+```
+- Or for desktop:
+```bash
+sudo parted /dev/sda resizepart 3 100% 
+```
 
 ## The following doesn't seem to work well, recommend using the GUI utility to expand the disk partition ##
 ###########################################################################################################
