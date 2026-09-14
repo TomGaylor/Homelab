@@ -1,3 +1,84 @@
+# Linux disk partition expansion procedure on a VMWare VM 
+
+## 1. Confirm available disk space in linux OS
+
+df -h # list partitions and sizes and used
+
+> **Note:**  Look for /dev/sda3 or the filesystem that contains /ertc, /var, /var/home
+     ### alternatively look for /dev/nvme0n1p3 for the above locations
+
+>  **details:**  /dev/sda2 is the OS boot partition
+
+>  **details:**  /dev/sda1 is the boot efi part
+
+## 2. Shutdown the linux OS at a bash prompt
+
+shutdown now
+
+## 3. In the VMware workstation mgmt console select the VM and choose the option to "Edit the Virtual Machine settings"
+
+- Select the Hard Disk Device in the left hand pane
+- Select Expand in the right hand panel to expand the disk capacity
+- Type in the nex Max disk size amount in GBs and click "Expand"
+- Click OK to the notification message about increasing the partition in the OS
+- Click OK to leave the VM settings interface
+
+## 4. Power on the linux VM
+
+## 5. Open the disk mgmt app ("Disks") in the OS
+
+- Select the appropriate disk and partition
+- Select the additional partitions button and click "resize..."
+- Move the slider or type the new size number as desired and click "resize"
+- Find the disk and partition number - Typical layout is something like /dev/nvme0n1p3 or /dev/sda3
+
+lsblk  
+
+## 6. Grow the partition
+> **Note:** Replace below with your disk and partition number (e.g. nvme0n1p3 259:3) 
+
+sudo growpart /dev/nvme0n1 3
+
+> **Note:** If this doesn't work because growpart is not installed, try the following options (more information below on issues with disk partition location challenges)
+
+## 6a. Alternate method:
+
+sudo btrfs filesystem resize max /sysroot
+
+ ## 6b. Alternate method:
+ 
+ - Check partition info to address the correct one
+```bash
+lsblk
+sudo parted -l
+```
+- Type the following
+```bash
+sudo parted /dev/nvme0n1 resizepart 3 100%
+```
+- Or for desktop:
+```bash
+sudo parted /dev/sda resizepart 3 100% 
+```
+
+## The following doesn't seem to work well
+> Recommend using the GUI utility to expand the disk partition
+
+## 1. Login and open a bash shell prompt
+- Type the following command for the appropriate volume
+```bash
+sudo btrfs filesystem resize max /var/home  
+```
+- Or...type the following if necessary
+```bash
+sudo btrfs filesystem resize max /dev/nvme01n1p3
+```
+
+# More info from Grok on issues and the procedure to expand disk partitions
+```http
+https://grok.com/share/bGVnYWN5_8d5ee3c8-0f8f-4563-b810-fac2fe4fe3d7
+```
+
 # Expand Disk Size on Bazzite
 
 Bazzite uses **Btrfs** for the root filesystem. There is no `ujust` command that expands the disk. You must grow the **partition** first, then grow the **filesystem**.
