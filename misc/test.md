@@ -1,38 +1,36 @@
-    ## Confirm available disk space in linux OS
+
+
+## 1. Confirm available disk space in linux OS
 
 df -h # list partitions and sizes and used
 
-   # look for /dev/sda3 or the filesystem that contains /ertc, /var, /var/home
+> **Note:**  Look for /dev/sda3 or the filesystem that contains /ertc, /var, /var/home
      ### alternatively look for /dev/nvme0n1p3 for the above locations
-   # /dev/sda2 is the OS boot partition
-   # /dev/sda1 is the boot efi part
 
-   #### Shutdown the linux OS at a bash prompt
+>  **details:**  /dev/sda2 is the OS boot partition
+
+>  **details:**  /dev/sda1 is the boot efi part
+
+## 2. Shutdown the linux OS at a bash prompt
 
 shutdown now
 
-   ##### In the VMware workstation mgmt console select the VM and choose the option to "Edit the Virtual Machine settings"
+## 3. In the VMware workstation mgmt console select the VM and choose the option to "Edit the Virtual Machine settings"
 
-   ###### Select the Hard Disk Device in the left hand pane
+- Select the Hard Disk Device in the left hand pane
+- Select Expand in the right hand panel to expand the disk capacity
+- Type in the nex Max disk size amount in GBs and click "Expand"
+- Click OK to the notification message about increasing the partition in the OS
+- Click OK to leave the VM settings interface
 
-   # Select Expand in the right hand panel to expand the disk capacity
+## 4. Power on the linux VM
 
-   # Type in the nex Max disk size amount in GBs and click "Expand"
+## 5. Open the disk mgmt app ("Disks") in the OS
 
-   # click OK to the notification message about increasing the partition in the OS
-
-   # Click OK to leave the VM settings interface
-
-   # Power on the linux VM
-
-   # Open the disk mgmt app ("Disks") in the OS and select the appropriate disk and partition
-
-   # Select the additional partitions button and click "resize..."
-
-   # move the slider or type the new size number as desired and click "resize"
-
-
-   # Find the disk and partition number - Typical layout is something like /dev/nvme0n1p3 or /dev/sda3
+- Select the appropriate disk and partition
+- Select the additional partitions button and click "resize..."
+- Move the slider or type the new size number as desired and click "resize"
+- Find the disk and partition number - Typical layout is something like /dev/nvme0n1p3 or /dev/sda3
 
 lsblk   # 
 
