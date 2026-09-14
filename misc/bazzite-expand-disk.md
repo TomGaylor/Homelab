@@ -1,9 +1,9 @@
 # Linux disk partition expansion procedure on a VMWare VM 
 
 ## 1. Confirm available disk space in linux OS
-
+```bash
 df -h # list partitions and sizes and used
-
+```
 > **Note:**  Look for /dev/sda3 or the filesystem that contains /ertc, /var, /var/home
      ### alternatively look for /dev/nvme0n1p3 for the above locations
 
@@ -12,9 +12,9 @@ df -h # list partitions and sizes and used
 >  **details:**  /dev/sda1 is the boot efi part
 
 ## 2. Shutdown the linux OS at a bash prompt
-
+```bash
 shutdown now
-
+```
 ## 3. In the VMware workstation mgmt console select the VM and choose the option to "Edit the Virtual Machine settings"
 
 - Select the Hard Disk Device in the left hand pane
@@ -31,20 +31,20 @@ shutdown now
 - Select the additional partitions button and click "resize..."
 - Move the slider or type the new size number as desired and click "resize"
 - Find the disk and partition number - Typical layout is something like /dev/nvme0n1p3 or /dev/sda3
-
+```bash
 lsblk  
-
+```
 ## 6. Grow the partition
 > **Note:** Replace below with your disk and partition number (e.g. nvme0n1p3 259:3) 
-
+```bash
 sudo growpart /dev/nvme0n1 3
-
+```
 > **Note:** If this doesn't work because growpart is not installed, try the following options (more information below on issues with disk partition location challenges)
 
 ## 6a. Alternate method:
-
+```bash
 sudo btrfs filesystem resize max /sysroot
-
+```
  ## 6b. Alternate method:
  
  - Check partition info to address the correct one
