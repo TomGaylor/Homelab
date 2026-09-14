@@ -61,19 +61,23 @@ sudo parted /dev/nvme0n1 resizepart 3 100%
 sudo parted /dev/sda resizepart 3 100% 
 ```
 
-## The following doesn't seem to work well, recommend using the GUI utility to expand the disk partition ##
-###########################################################################################################
+## The following doesn't seem to work well
+> Recommend using the GUI utility to expand the disk partition
 
-   # Login and open a bash shell prompt and type the following command for the appropriate volume
+## 1. Login and open a bash shell prompt
+- Type the following command for the appropriate volume
+```bash
+sudo btrfs filesystem resize max /var/home  
+```
+- Or...type the following if necessary
+```bash
+sudo btrfs filesystem resize max /dev/nvme01n1p3
+```
 
-sudo btrfs filesystem resize max /var/home   # or /dev/nvme01n1p3
-
-###########################################################################################################
-
-#########More info from Grok on issues and the procedure to expand disk partitions #########
-
-## https://grok.com/share/bGVnYWN5_8d5ee3c8-0f8f-4563-b810-fac2fe4fe3d7                   ##
-
+# More info from Grok on issues and the procedure to expand disk partitions
+```http
+https://grok.com/share/bGVnYWN5_8d5ee3c8-0f8f-4563-b810-fac2fe4fe3d7
+```
 
 # Expand Disk Size on Bazzite
 
