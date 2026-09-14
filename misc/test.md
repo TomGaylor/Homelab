@@ -1,13 +1,13 @@
-    # Confirm available disk space in linux OS
+    ## Confirm available disk space in linux OS
 
 df -h # list partitions and sizes and used
 
    # look for /dev/sda3 or the filesystem that contains /ertc, /var, /var/home
-     # alternatively look for /dev/nvme0n1p3 for the above locations
+     ### alternatively look for /dev/nvme0n1p3 for the above locations
    # /dev/sda2 is the OS boot partition
    # /dev/sda1 is the boot efi part
 
-   # Shutdown the linux OS at a bash prompt
+   ##### Shutdown the linux OS at a bash prompt
 
 shutdown now
 
